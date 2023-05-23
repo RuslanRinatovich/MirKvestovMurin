@@ -1,0 +1,37 @@
+﻿<Window x:Class="QuestWorldApp.Windows.OrganizerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuestWorldApp.Windows"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="Организатор" Height="400" Width="800" 
+  
+        WindowStartupLocation="CenterScreen" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBox VerticalAlignment="Stretch" x:Name="TbTitle" Text="{Binding Title}" Grid.Row="0"    materialDesign:HintAssist.Hint="Название" Padding="15 0 0 0"/>
+        <TextBox VerticalAlignment="Stretch" x:Name="TbDescription" Text="{Binding Description}" Grid.Row="1"  TextWrapping="Wrap"  materialDesign:HintAssist.Hint="Описание" Padding="15 0 0 0"/>
+        <TextBox VerticalAlignment="Stretch" x:Name="TbAddress" Text="{Binding Address}" Grid.Row="2"  materialDesign:HintAssist.Hint="Адрес" Padding="15 0 0 0"/>
+        <xctk:MaskedTextBox Text="{Binding Phone}"  x:Name="TbPhone"
+                 Mask="+0 (000) 000-00-00" Style="{DynamicResource MaterialDesignTextBox}"
+                 Padding="20 5 0 0" Grid.Column="0" VerticalAlignment="Center" Grid.Row="3"   />
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="4" Grid.ColumnSpan="2" Margin="127,0,103,0" Width="162">
+            <Button IsDefault="True"  MinWidth="60" Margin="5" Click="Button_Click">OK</Button>
+            <Button IsCancel="True" MinWidth="60" Margin="5">Отмена</Button>
+        </StackPanel>
+    </Grid>
+</Window>
+
+    

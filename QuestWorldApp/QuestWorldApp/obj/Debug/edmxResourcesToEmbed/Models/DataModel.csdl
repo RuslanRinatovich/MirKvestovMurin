@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MirKvestovBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Age">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Quests" Relationship="Self.FK_Quest_Age" FromRole="Age" ToRole="Quest" />
+  </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TimeSheetId" Type="Int32" Nullable="false" />
+    <Property Name="UserInfo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Payed" Type="Boolean" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TimeSheet" Relationship="Self.FK_Booking_TimeSheet" FromRole="Booking" ToRole="TimeSheet" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Booking_User" FromRole="Booking" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="QuestCategories" Relationship="Self.FK_QuestCategory_Category" FromRole="Category" ToRole="QuestCategory" />
+  </EntityType>
+  <EntityType Name="Organizer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Quests" Relationship="Self.FK_Quest_Organizer" FromRole="Organizer" ToRole="Quest" />
+  </EntityType>
+  <EntityType Name="Quest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Photo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MinPlayersCount" Type="Int32" Nullable="false" />
+    <Property Name="MaxPlayersCount" Type="Int32" Nullable="false" />
+    <Property Name="Duration" Type="Int32" Nullable="false" />
+    <Property Name="Complexity" Type="Int32" Nullable="false" />
+    <Property Name="FearLevel" Type="Int32" Nullable="false" />
+    <Property Name="AgeId" Type="Int32" Nullable="false" />
+    <Property Name="OrganizerId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Age" Relationship="Self.FK_Quest_Age" FromRole="Quest" ToRole="Age" />
+    <NavigationProperty Name="Organizer" Relationship="Self.FK_Quest_Organizer" FromRole="Quest" ToRole="Organizer" />
+    <NavigationProperty Name="QuestCategories" Relationship="Self.FK_QuestCategory_Quest" FromRole="Quest" ToRole="QuestCategory" />
+    <NavigationProperty Name="Rewiews" Relationship="Self.FK_Rewiew_Quest" FromRole="Quest" ToRole="Rewiew" />
+    <NavigationProperty Name="TimeSheets" Relationship="Self.FK_TimeSheet_Quest" FromRole="Quest" ToRole="TimeSheet" />
+  </EntityType>
+  <EntityType Name="QuestCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestId" Type="Int32" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_QuestCategory_Category" FromRole="QuestCategory" ToRole="Category" />
+    <NavigationProperty Name="Quest" Relationship="Self.FK_QuestCategory_Quest" FromRole="QuestCategory" ToRole="Quest" />
+  </EntityType>
+  <EntityType Name="Rewiew">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Rate" Type="Int32" Nullable="false" />
+    <Property Name="QualityOfPuzzles" Type="Double" Nullable="false" />
+    <Property Name="Entourage" Type="Double" Nullable="false" />
+    <Property Name="Sevice" Type="Double" Nullable="false" />
+    <Property Name="Safety" Type="Double" Nullable="false" />
+    <Property Name="QuestId" Type="Int32" Nullable="false" />
+    <Property Name="UserInfo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Quest" Relationship="Self.FK_Rewiew_Quest" FromRole="Rewiew" ToRole="Quest" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TimeSheet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <Property Name="QuestId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK_Booking_TimeSheet" FromRole="TimeSheet" ToRole="Booking" />
+    <NavigationProperty Name="Quest" Relationship="Self.FK_TimeSheet_Quest" FromRole="TimeSheet" ToRole="Quest" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK_Booking_User" FromRole="User" ToRole="Booking" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <Association Name="FK_Quest_Age">
+    <End Role="Age" Type="Self.Age" Multiplicity="1" />
+    <End Role="Quest" Type="Self.Quest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Age">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Quest">
+        <PropertyRef Name="AgeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_TimeSheet">
+    <End Role="TimeSheet" Type="Self.TimeSheet" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TimeSheet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="TimeSheetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserName" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="UserName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestCategory_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="QuestCategory" Type="Self.QuestCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QuestCategory">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quest_Organizer">
+    <End Role="Organizer" Type="Self.Organizer" Multiplicity="1" />
+    <End Role="Quest" Type="Self.Quest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Quest">
+        <PropertyRef Name="OrganizerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestCategory_Quest">
+    <End Role="Quest" Type="Self.Quest" Multiplicity="1" />
+    <End Role="QuestCategory" Type="Self.QuestCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quest">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QuestCategory">
+        <PropertyRef Name="QuestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rewiew_Quest">
+    <End Role="Quest" Type="Self.Quest" Multiplicity="1" />
+    <End Role="Rewiew" Type="Self.Rewiew" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quest">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rewiew">
+        <PropertyRef Name="QuestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TimeSheet_Quest">
+    <End Role="Quest" Type="Self.Quest" Multiplicity="1" />
+    <End Role="TimeSheet" Type="Self.TimeSheet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quest">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TimeSheet">
+        <PropertyRef Name="QuestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MirKvestovBDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Ages" EntityType="Self.Age" />
+    <EntitySet Name="Bookings" EntityType="Self.Booking" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Organizers" EntityType="Self.Organizer" />
+    <EntitySet Name="Quests" EntityType="Self.Quest" />
+    <EntitySet Name="QuestCategories" EntityType="Self.QuestCategory" />
+    <EntitySet Name="Rewiews" EntityType="Self.Rewiew" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TimeSheets" EntityType="Self.TimeSheet" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Quest_Age" Association="Self.FK_Quest_Age">
+      <End Role="Age" EntitySet="Ages" />
+      <End Role="Quest" EntitySet="Quests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_TimeSheet" Association="Self.FK_Booking_TimeSheet">
+      <End Role="TimeSheet" EntitySet="TimeSheets" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_User" Association="Self.FK_Booking_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestCategory_Category" Association="Self.FK_QuestCategory_Category">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="QuestCategory" EntitySet="QuestCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quest_Organizer" Association="Self.FK_Quest_Organizer">
+      <End Role="Organizer" EntitySet="Organizers" />
+      <End Role="Quest" EntitySet="Quests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestCategory_Quest" Association="Self.FK_QuestCategory_Quest">
+      <End Role="Quest" EntitySet="Quests" />
+      <End Role="QuestCategory" EntitySet="QuestCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rewiew_Quest" Association="Self.FK_Rewiew_Quest">
+      <End Role="Quest" EntitySet="Quests" />
+      <End Role="Rewiew" EntitySet="Rewiews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TimeSheet_Quest" Association="Self.FK_TimeSheet_Quest">
+      <End Role="Quest" EntitySet="Quests" />
+      <End Role="TimeSheet" EntitySet="TimeSheets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

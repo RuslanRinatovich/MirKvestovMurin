@@ -1,0 +1,106 @@
+﻿<Page x:Class="QuestWorldApp.Pages.AddQuestPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:QuestWorldApp.Pages" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="800"
+       Title="Добавление и редактирование"
+      >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+      
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="245"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="BtnSave" Grid.Row="11" Content="Сохранить"  
+                HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" 
+                Click="BtnSaveClick" Grid.Column="1" Margin="213,3,222,0"/>
+
+        <TextBlock  Grid.Row="0" Grid.Column="0" Text="Фото"  Margin="20 0"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Название"  Margin="20 0"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Описание"  Margin="20 0"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Количество игроков"  Margin="20 0"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Время, мин"  Margin="20 0"/>
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Сложность"  Margin="20 0"/>
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="Уровень страха"  Margin="20 0"/>
+        <TextBlock Grid.Row="7" Grid.Column="0" Text="Направления"  Margin="20 0"/>
+        <TextBlock Grid.Row="8" Grid.Column="0" Text="Возрастная категория"  Margin="20 0"/>
+        <TextBlock Grid.Row="9" Grid.Column="0" Text="Организатор"  Margin="20 0"/>
+
+
+        <Image x:Name="ImagePhoto" Source="{Binding GetPhoto}" 
+               Grid.Row="0" Grid.Column="1" Margin="10 0 0 0"
+               VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+        <Button x:Name="BtnLoad" Grid.Row="0" Grid.Column="0" Margin="120,5,0,0" 
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Click="BtnLoadClick" Content="{materialDesign:PackIcon Kind=Upload}" Width="79"/>
+
+        <TextBox x:Name="TextBoxTitle" Text="{Binding Title}" 
+                 Grid.Row="1" Grid.Column="1" Padding="0,2" Height="Auto"/>
+
+        <TextBox x:Name="TextBoxDescription" Text="{Binding Description}" 
+                 Grid.Row="2" Grid.Column="1" Padding="0,2" Height="Auto" TextWrapping="Wrap"/>
+        <StackPanel  Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+            <TextBlock Text="от" VerticalAlignment="Center" Margin="10 0"/>
+            <xctk:IntegerUpDown x:Name="IntegerUpDownMinimum" Minimum="1" Width="100" Value="{Binding MinPlayersCount}"/>
+            <TextBlock Text="до" Margin="10 0" VerticalAlignment="Center"/>
+            <xctk:IntegerUpDown x:Name="IntegerUpDownMaximum" Minimum="1"  Width="100" Value="{Binding MaxPlayersCount}"/>
+        </StackPanel>
+        <xctk:IntegerUpDown x:Name="IntegerUpDownDuration" HorizontalAlignment="Left"  Grid.Row="4" Grid.Column="1" Minimum="1" Width="100" Value="{Binding Duration}"/>
+
+        <materialDesign:RatingBar  x:Name="RatingBarComplexity"  Grid.Row="5" Grid.Column="1"  HorizontalAlignment="Left" Max="5"  Orientation="Horizontal"  Value="{Binding Complexity}">
+            <materialDesign:RatingBar.ValueItemTemplate>
+                <DataTemplate DataType="system:Int32">
+                    <Grid>
+                        <materialDesign:PackIcon Width="24"  Height="24"   Kind="Key" />
+                        <TextBlock HorizontalAlignment="Center"  VerticalAlignment="Center"  FontSize="8"  Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Text="{Binding}" />
+                    </Grid>
+                </DataTemplate>
+            </materialDesign:RatingBar.ValueItemTemplate>
+        </materialDesign:RatingBar>
+
+        <materialDesign:RatingBar  x:Name="RatingBarFearLevel"  Grid.Row="6" Grid.Column="1"  HorizontalAlignment="Left" Max="5"  Orientation="Horizontal"  Value="{Binding FearLevel}">
+            <materialDesign:RatingBar.ValueItemTemplate>
+                <DataTemplate DataType="system:Int32">
+                    <Grid>
+                        <materialDesign:PackIcon Width="24"  Height="24"   Kind="SkullCrossbones" />
+                        <TextBlock HorizontalAlignment="Center"  VerticalAlignment="Center"  FontSize="8"  Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" Text="{Binding}" />
+                    </Grid>
+                </DataTemplate>
+            </materialDesign:RatingBar.ValueItemTemplate>
+        </materialDesign:RatingBar>
+
+
+
+
+        <xctk:CheckComboBox x:Name="ComboCategories"  Grid.Row="7" Grid.Column="1" 
+                                    DisplayMemberPath="Title" 
+                            SelectedMemberPath="Selected" 
+                            TabIndex="34" MaxDropDownHeight="150"/>
+        <ComboBox x:Name="ComboAge"  SelectedItem="{Binding Age}"
+                  Grid.Row="8" Grid.Column="1"  DisplayMemberPath="Title" 
+                  SelectedValuePath="Id" />
+
+        <ComboBox x:Name="ComboOrganizer"  SelectedItem="{Binding Organizer}"
+                  Grid.Row="9" Grid.Column="1"  DisplayMemberPath="Title" 
+                  SelectedValuePath="Id" />
+       
+    </Grid>
+</Page>
+
