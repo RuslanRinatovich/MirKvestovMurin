@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
           xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:QuestWorldApp.Windows"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
          Title="Мой профиль"
         WindowStartupLocation="CenterScreen"   Height="500" Width="800" >
@@ -28,7 +29,9 @@
         <TextBox Text="{Binding LastName}" materialDesign:HintAssist.Hint="Фамилия"  Padding="20 5 0 0" Grid.Column="0" VerticalAlignment="Center"  Grid.Row="1" Height="30" Margin="0,7" />
         <TextBox Text="{Binding FirstName}" materialDesign:HintAssist.Hint="Имя"  Padding="20 5 0 0" Grid.Column="0" VerticalAlignment="Center" Grid.Row="2" Height="30" Margin="0,7" />
         <TextBox Text="{Binding MiddleName}" materialDesign:HintAssist.Hint="Отчество"  Padding="20 5 0 0" Grid.Column="0" VerticalAlignment="Center" Grid.Row="3" Height="30" Margin="0,7" />
-        <TextBox Text="{Binding Phone}" materialDesign:HintAssist.Hint="Телефон"  Padding="20 5 0 0" Grid.Column="0" VerticalAlignment="Center" Grid.Row="4" Height="30" Margin="0,7" />
+        <xctk:MaskedTextBox   x:Name="TbPhone" Text="{Binding Phone}"
+                 Mask="+0 (000) 000-00-00" Style="{DynamicResource MaterialDesignTextBox}"
+                 Padding="20 5 0 0" Grid.Column="0" VerticalAlignment="Center" Grid.Row="4" Height="30" Margin="0,7"  />
         <TextBox Text="{Binding Email}" materialDesign:HintAssist.Hint="E-mail"  Padding="20 5 0 0" Grid.Column="0" VerticalAlignment="Center" Grid.Row="5" Height="30" Margin="0,7" />
         <CheckBox x:Name="CheckBoxChangePassword" Content="Изменить пароль" Width="200"  VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="6" Margin="20 0 0 0"  Grid.Column="0"  Height="30"  />
         <PasswordBox  Grid.Column="0" Margin="200 0 0 0" x:Name="PasswordBoxOldPassword"  VerticalAlignment="Center" materialDesign:HintAssist.Hint="Введите старый пароль" Grid.Row="6" Height="30"  />

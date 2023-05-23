@@ -22,8 +22,9 @@ namespace QuestWorldApp.Models
         public double Sevice { get; set; }
         public double Safety { get; set; }
         public int QuestId { get; set; }
-        public string UserInfo { get; set; }
+        public string UserName { get; set; }
     
         public virtual Quest Quest { get; set; }
+        public virtual User User { get; set; }
     }
 }

@@ -18,6 +18,7 @@ namespace QuestWorldApp.Models
         public User()
         {
             this.Bookings = new HashSet<Booking>();
+            this.Rewiews = new HashSet<Rewiew>();
         }
     
         public string UserName { get; set; }
@@ -31,6 +32,8 @@ namespace QuestWorldApp.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking> Bookings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Rewiew> Rewiews { get; set; }
         public virtual Role Role { get; set; }
     }
 }

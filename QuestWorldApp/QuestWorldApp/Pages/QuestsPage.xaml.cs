@@ -185,5 +185,10 @@ namespace QuestWorldApp.Pages
         {
             UpdateData();
         }
+
+        private void BtnTimeTable_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new TimeSheetPage((sender as Button).DataContext as Quest));
+        }
     }
 }

@@ -71,7 +71,7 @@
     <Property Name="Sevice" Type="float" Nullable="false" />
     <Property Name="Safety" Type="float" Nullable="false" />
     <Property Name="QuestId" Type="int" Nullable="false" />
-    <Property Name="UserInfo" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -197,6 +197,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Rewiew_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Rewiew" Type="Self.Rewiew" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserName" />
+      </Principal>
+      <Dependent Role="Rewiew">
+        <PropertyRef Name="UserName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_TimeSheet_Quest">
     <End Role="Quest" Type="Self.Quest" Multiplicity="1" />
     <End Role="TimeSheet" Type="Self.TimeSheet" Multiplicity="*" />
@@ -259,6 +271,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_Rewiew_Quest" Association="Self.FK_Rewiew_Quest">
       <End Role="Quest" EntitySet="Quest" />
+      <End Role="Rewiew" EntitySet="Rewiew" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rewiew_User" Association="Self.FK_Rewiew_User">
+      <End Role="User" EntitySet="User" />
       <End Role="Rewiew" EntitySet="Rewiew" />
     </AssociationSet>
     <AssociationSet Name="FK_TimeSheet_Quest" Association="Self.FK_TimeSheet_Quest">

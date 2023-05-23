@@ -4,18 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b927ad293d68491a81ec83bdcf5ff00a" Name="Diagram1">
-        <EntityTypeShape EntityType="MirKvestovBDModel.Age" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MirKvestovBDModel.Booking" Width="1.5" PointX="7.5" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="MirKvestovBDModel.Category" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="MirKvestovBDModel.Organizer" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MirKvestovBDModel.Quest" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MirKvestovBDModel.QuestCategory" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MirKvestovBDModel.Rewiew" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MirKvestovBDModel.Role" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MirKvestovBDModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MirKvestovBDModel.TimeSheet" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MirKvestovBDModel.User" Width="1.5" PointX="5.25" PointY="12.875" IsExpanded="true" />
+      <Diagram DiagramId="a816b53a4e1c40ceabb65bcd05bc1df1" Name="Diagram1">
+        <EntityTypeShape EntityType="MirKvestovBDModel.Age" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MirKvestovBDModel.Booking" Width="1.5" PointX="7.5" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MirKvestovBDModel.Category" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MirKvestovBDModel.Organizer" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MirKvestovBDModel.Quest" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MirKvestovBDModel.QuestCategory" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MirKvestovBDModel.Rewiew" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MirKvestovBDModel.Role" Width="1.5" PointX="3.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MirKvestovBDModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MirKvestovBDModel.TimeSheet" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MirKvestovBDModel.User" Width="1.5" PointX="6" PointY="15.25" IsExpanded="true" />
         <AssociationConnector Association="MirKvestovBDModel.FK_Quest_Age" ManuallyRouted="false" />
         <AssociationConnector Association="MirKvestovBDModel.FK_Booking_TimeSheet" ManuallyRouted="false" />
         <AssociationConnector Association="MirKvestovBDModel.FK_Booking_User" ManuallyRouted="false" />
@@ -24,6 +24,7 @@
         <AssociationConnector Association="MirKvestovBDModel.FK_QuestCategory_Quest" ManuallyRouted="false" />
         <AssociationConnector Association="MirKvestovBDModel.FK_Rewiew_Quest" ManuallyRouted="false" />
         <AssociationConnector Association="MirKvestovBDModel.FK_TimeSheet_Quest" ManuallyRouted="false" />
+        <AssociationConnector Association="MirKvestovBDModel.FK_Rewiew_User" ManuallyRouted="false" />
         <AssociationConnector Association="MirKvestovBDModel.FK_User_Role" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

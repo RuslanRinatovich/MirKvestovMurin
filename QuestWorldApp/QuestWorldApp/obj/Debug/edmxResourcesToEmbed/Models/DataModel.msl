@@ -77,7 +77,7 @@
           <ScalarProperty Name="Sevice" ColumnName="Sevice" />
           <ScalarProperty Name="Safety" ColumnName="Safety" />
           <ScalarProperty Name="QuestId" ColumnName="QuestId" />
-          <ScalarProperty Name="UserInfo" ColumnName="UserInfo" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

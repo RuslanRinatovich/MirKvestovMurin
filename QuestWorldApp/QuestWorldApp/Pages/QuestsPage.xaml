@@ -127,19 +127,11 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Width="auto" Header="Абонементы">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button x:Name="BtnPrice"  Margin="0">
-                                <materialDesign:PackIcon Kind="CurrencyRub" />
-                            </Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                
                 <DataGridTemplateColumn Width="auto" Header="Расписание">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="BtnTimeTable"  Margin="0">
+                            <Button x:Name="BtnTimeTable"  Margin="0" Click="BtnTimeTable_Click">
                                 <materialDesign:PackIcon Kind="Timelapse" />
                             </Button>
                         </DataTemplate>

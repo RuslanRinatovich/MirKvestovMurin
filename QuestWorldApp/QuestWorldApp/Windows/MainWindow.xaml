@@ -39,7 +39,11 @@
                              Style="{StaticResource MaterialDesignFlatButton}" Visibility="Collapsed"
                             Content="{materialDesign:PackIcon Kind=Account, Size=24}"
                            />
-
+                    <Button x:Name="BtnMyrewiew"  Click="BtnMyrewiew_Click" Visibility="Collapsed"
+                            ToolTip="Мои отзывы"
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            Content="{materialDesign:PackIcon Kind=MessageDraw, Size=24}"
+                            />
                     <Button x:Name="BtnMyBooking"  Click="BtnMyOrders_Click" Visibility="Collapsed"
                             ToolTip="Мои квесты"
                             Style="{StaticResource MaterialDesignFlatButton}"

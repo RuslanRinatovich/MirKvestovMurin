@@ -65,7 +65,9 @@ namespace QuestWorldApp
                 BtnBooking.Visibility = Visibility.Collapsed;
                 BtnQuests.Visibility = Visibility.Collapsed;
                 BtnMyAccount.Visibility = Visibility.Collapsed;
+
                 BtnMyBooking.Visibility = Visibility.Collapsed;
+                BtnMyrewiew.Visibility = Visibility.Collapsed;
                 //if (Manager.CurrentUser is null)
                 //    return;
                 //if (Manager.CurrentUser.RoleId == 1)
@@ -93,6 +95,7 @@ namespace QuestWorldApp
                     BtnBooking.Visibility = Visibility.Visible;
                     BtnQuests.Visibility = Visibility.Visible;
                     BtnMyAccount.Visibility = Visibility.Visible;
+                    BtnMyrewiew.Visibility = Visibility.Collapsed;
                     BtnMyBooking.Visibility = Visibility.Collapsed;
                 }                    
                 else
@@ -100,6 +103,7 @@ namespace QuestWorldApp
                     BtnBooking.Visibility = Visibility.Collapsed;
                     BtnQuests.Visibility = Visibility.Collapsed;
                     BtnMyAccount.Visibility = Visibility.Visible;
+                    BtnMyrewiew.Visibility = Visibility.Visible;
                     BtnMyBooking.Visibility = Visibility.Visible;
                 }
 
@@ -127,8 +131,11 @@ MessageBoxImage.Question);
                     BtnQuests.Visibility = Visibility.Collapsed;
                     BtnMyAccount.Visibility = Visibility.Collapsed;
                     BtnMyBooking.Visibility = Visibility.Collapsed;
+                    BtnMyrewiew.Visibility = Visibility.Collapsed;
+                    MainFrame.NavigationService.Refresh();
                     return;
                 }
+
             }
 
             LoginWindow window = new LoginWindow();
@@ -140,6 +147,7 @@ MessageBoxImage.Question);
                     BtnBooking.Visibility = Visibility.Visible;
                     BtnQuests.Visibility = Visibility.Visible;
                     BtnMyAccount.Visibility = Visibility.Visible;
+                    BtnMyrewiew.Visibility = Visibility.Collapsed;
                     BtnMyBooking.Visibility = Visibility.Collapsed;
                 }
                 else
@@ -147,10 +155,13 @@ MessageBoxImage.Question);
                     BtnBooking.Visibility = Visibility.Collapsed;
                     BtnQuests.Visibility = Visibility.Collapsed;
                     BtnMyAccount.Visibility = Visibility.Visible;
+                    BtnMyrewiew.Visibility = Visibility.Visible;
                     BtnMyBooking.Visibility = Visibility.Visible;
                 }
 
             }
+            MainFrame.NavigationService.Refresh();
+
 
         }
 
@@ -193,22 +204,7 @@ MessageBoxImage.Question);
 
         private void BtnMyOrders_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-
-
-            //    MakeOrderWindow window = new MakeOrderWindow();
-
-            //    if (window.ShowDialog() == true)
-            //    {
-
-            //        MessageBox.Show("Запись изменена", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
-            //    }
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Ошибка");
-            //}
+            MainFrame.Navigate(new MyBookingPage());
         }
 
         private void BtnBuyes_Click(object sender, RoutedEventArgs e)
@@ -223,7 +219,12 @@ MessageBoxImage.Question);
 
         private void BtnBooking_Click(object sender, RoutedEventArgs e)
         {
-              
+            MainFrame.Navigate(new BookingPage());
+        }
+
+        private void BtnMyrewiew_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new MyRewiewPage());
         }
     }
 }
