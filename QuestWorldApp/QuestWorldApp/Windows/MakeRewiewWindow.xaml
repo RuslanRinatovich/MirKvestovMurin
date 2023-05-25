@@ -21,7 +21,7 @@
             <RowDefinition Height="40" />
             <RowDefinition Height="40" />
             <RowDefinition Height="40" />
-           
+
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -37,8 +37,8 @@
         <materialDesign:RatingBar   x:Name="RatingBarRate"  Grid.Row="3" IsPreviewValueEnabled="True"  
                                     Max="5"  Min="1"  ValueIncrements="1" 
                                     Value="{Binding Rate}" Grid.Column="1"  />
-        <TextBlock Grid.Row="4" Margin="10 0 0 0" 
-                   Text="Качество загадок"/>
+        <TextBlock Grid.Row="3" Margin="10,40.6,0,0" 
+                   Text="Качество загадок" Grid.RowSpan="2"/>
         <materialDesign:RatingBar   x:Name="RatingBarQualityOfPuzzles"  Grid.Row="4" IsPreviewValueEnabled="True"  
                                     Max="10"  Min="0"  
                                     ValueIncrements="0.25" 
