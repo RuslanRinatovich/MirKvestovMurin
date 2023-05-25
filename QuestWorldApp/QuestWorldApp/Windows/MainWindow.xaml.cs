@@ -65,9 +65,11 @@ namespace QuestWorldApp
                 BtnBooking.Visibility = Visibility.Collapsed;
                 BtnQuests.Visibility = Visibility.Collapsed;
                 BtnMyAccount.Visibility = Visibility.Collapsed;
-
+                BtnUsers.Visibility = Visibility.Collapsed;
+                BtnAllRewiew.Visibility = Visibility.Collapsed;
                 BtnMyBooking.Visibility = Visibility.Collapsed;
                 BtnMyrewiew.Visibility = Visibility.Collapsed;
+                TextBlockUser.Text = "";
                 //if (Manager.CurrentUser is null)
                 //    return;
                 //if (Manager.CurrentUser.RoleId == 1)
@@ -95,18 +97,24 @@ namespace QuestWorldApp
                     BtnBooking.Visibility = Visibility.Visible;
                     BtnQuests.Visibility = Visibility.Visible;
                     BtnMyAccount.Visibility = Visibility.Visible;
+                    BtnAllRewiew.Visibility = Visibility.Visible;
                     BtnMyrewiew.Visibility = Visibility.Collapsed;
                     BtnMyBooking.Visibility = Visibility.Collapsed;
+                    BtnUsers.Visibility = Visibility.Visible;
                 }                    
                 else
                 {
                     BtnBooking.Visibility = Visibility.Collapsed;
                     BtnQuests.Visibility = Visibility.Collapsed;
+                    BtnUsers.Visibility = Visibility.Collapsed;
+                    BtnAllRewiew.Visibility = Visibility.Collapsed;
                     BtnMyAccount.Visibility = Visibility.Visible;
                     BtnMyrewiew.Visibility = Visibility.Visible;
                     BtnMyBooking.Visibility = Visibility.Visible;
                 }
-
+                IconBtnKey.Kind = MaterialDesignThemes.Wpf.PackIconKind.Logout;
+                BtnEnter.ToolTip = "Выйти";
+                TextBlockUser.Text = $"{Manager.CurrentUser.UserName}";
             }
         }
 
@@ -125,13 +133,17 @@ MessageBoxImage.Question);
                 if (messageBoxResult == MessageBoxResult.OK)
                 {
                     IconBtnKey.Kind = MaterialDesignThemes.Wpf.PackIconKind.Login;
+                    BtnEnter.ToolTip = "Войти";
                     Manager.CurrentUser = null;
                     BtnBack.Visibility = Visibility.Collapsed;
                     BtnBooking.Visibility = Visibility.Collapsed;
                     BtnQuests.Visibility = Visibility.Collapsed;
                     BtnMyAccount.Visibility = Visibility.Collapsed;
+                    BtnAllRewiew.Visibility = Visibility.Collapsed;
                     BtnMyBooking.Visibility = Visibility.Collapsed;
                     BtnMyrewiew.Visibility = Visibility.Collapsed;
+                    BtnUsers.Visibility = Visibility.Collapsed;
+                    TextBlockUser.Text = "";
                     MainFrame.NavigationService.Refresh();
                     return;
                 }
@@ -147,18 +159,25 @@ MessageBoxImage.Question);
                     BtnBooking.Visibility = Visibility.Visible;
                     BtnQuests.Visibility = Visibility.Visible;
                     BtnMyAccount.Visibility = Visibility.Visible;
+                    BtnAllRewiew.Visibility = Visibility.Visible;
                     BtnMyrewiew.Visibility = Visibility.Collapsed;
+                    BtnUsers.Visibility = Visibility.Visible;
                     BtnMyBooking.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
                     BtnBooking.Visibility = Visibility.Collapsed;
                     BtnQuests.Visibility = Visibility.Collapsed;
+                    BtnUsers.Visibility = Visibility.Collapsed;
+                    BtnAllRewiew.Visibility = Visibility.Collapsed;
                     BtnMyAccount.Visibility = Visibility.Visible;
+                   
                     BtnMyrewiew.Visibility = Visibility.Visible;
                     BtnMyBooking.Visibility = Visibility.Visible;
                 }
-
+                IconBtnKey.Kind = MaterialDesignThemes.Wpf.PackIconKind.Logout;
+                BtnEnter.ToolTip = "Выйти";
+                TextBlockUser.Text = $"{Manager.CurrentUser.UserName}";
             }
             MainFrame.NavigationService.Refresh();
 
@@ -225,6 +244,16 @@ MessageBoxImage.Question);
         private void BtnMyrewiew_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new MyRewiewPage());
+        }
+
+        private void BtnUsers_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new UsersPage());
+        }
+
+        private void BtnAllRewiew_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new RewiewsPage());
         }
     }
 }

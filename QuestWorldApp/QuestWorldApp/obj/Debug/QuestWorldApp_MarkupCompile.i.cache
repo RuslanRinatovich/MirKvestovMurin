@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\DIPLOMS\Мурин\QuestWorldApp\QuestWorldApp\App.xaml
-20-1919390967
+23-1023144067
 2-1890902742
-43-650912655
+491116709350
 27-1251602431
-Pages\AddQuestPage.xaml;Pages\AgesPage.xaml;Pages\BookingPage.xaml;Pages\CategoryPage.xaml;Pages\MyBookingPage.xaml;Pages\MyRewiewPage.xaml;Pages\OrganizersPage.xaml;Pages\QuestCataloguePage.xaml;Pages\QuestsPage.xaml;Pages\TimeSheetPage.xaml;Windows\AddBookingWindow.xaml;Windows\AgeWindow.xaml;Windows\BookingWindow.xaml;Windows\CategoryWindow.xaml;Windows\LoginWindow.xaml;Windows\MainWindow.xaml;Windows\MakeRewiewWindow.xaml;Windows\MyAccountWindow.xaml;Windows\OrganizerWindow.xaml;Windows\TimeSheetWindow.xaml;
+Pages\AddQuestPage.xaml;Pages\AddUserPage.xaml;Pages\AgesPage.xaml;Pages\BookingPage.xaml;Pages\CategoryPage.xaml;Pages\MyBookingPage.xaml;Pages\MyRewiewPage.xaml;Pages\OrganizersPage.xaml;Pages\QuestCataloguePage.xaml;Pages\QuestsPage.xaml;Pages\RewiewsPage.xaml;Pages\TimeSheetPage.xaml;Pages\UsersPage.xaml;Windows\AddBookingWindow.xaml;Windows\AgeWindow.xaml;Windows\BookingWindow.xaml;Windows\CategoryWindow.xaml;Windows\LoginWindow.xaml;Windows\MainWindow.xaml;Windows\MakeRewiewWindow.xaml;Windows\MyAccountWindow.xaml;Windows\OrganizerWindow.xaml;Windows\TimeSheetWindow.xaml;
 
 True
 

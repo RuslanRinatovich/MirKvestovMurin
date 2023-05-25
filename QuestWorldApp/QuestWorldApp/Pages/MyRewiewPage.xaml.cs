@@ -115,7 +115,8 @@ namespace QuestWorldApp.Pages
         private void UpdateData()
         {
             // получаем текущие данные из бд
-            var currentGoods = MirKvestovBDEntities.GetContext().Organizers.OrderBy(p => p.Title).ToList();
+            string username = Manager.CurrentUser.UserName;
+            var currentGoods = MirKvestovBDEntities.GetContext().Rewiews.Where(p => p.UserName == username).OrderBy(p => p.Title).ToList();
             // выбор только тех товаров, по определенному диапазону скидки
 
             currentGoods = currentGoods.Where(p => p.Title.ToLower().Contains(TBoxSearch.Text.ToLower())).ToList();
@@ -125,10 +126,10 @@ namespace QuestWorldApp.Pages
             {
                 // сортировка по возрастанию цены
                 if (ComboSort.SelectedIndex == 0)
-                    currentGoods = currentGoods.OrderBy(p => p.Title).ToList();
+                    currentGoods = currentGoods.OrderBy(p => p.Quest.Title).ToList();
                 // сортировка по убыванию цены
                 if (ComboSort.SelectedIndex == 1)
-                    currentGoods = currentGoods.OrderByDescending(p => p.Title).ToList();
+                    currentGoods = currentGoods.OrderByDescending(p => p.Quest.Title).ToList();
             }
             // В качестве источника данных присваиваем список данных
             DataGridGood.ItemsSource = currentGoods;
@@ -141,6 +142,11 @@ namespace QuestWorldApp.Pages
             UpdateData();
         }
 
+        private void BtnOk_Click(object sender, RoutedEventArgs e)
+        {
+
+            DialogHostMoreInformation.IsOpen = false;
+        }
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -173,6 +179,33 @@ namespace QuestWorldApp.Pages
             {
                 MessageBox.Show("Ошибка");
             }
+        }
+
+      
+            private void BtnView_Click(object sender, RoutedEventArgs e)
+            {
+                try
+                {
+                    //  если ни одного объекта не выделено, выходим
+                    if (DataGridGood.SelectedItem == null) return;
+                    // получаем выделенный объект
+                    Rewiew selected = DataGridGood.SelectedItem as Rewiew;
+
+
+                    //Trainer trainer = YogaFeatPilatesBDEntities.GetContext().Trainers.FirstOrDefault(p => p.Id == edu.TrainerId);
+                    //List<TimeTable> timeTables = YogaFeatPilatesBDEntities.GetContext().TimeTables.Where(p => p.CategoryTrainerId == edu.Id).ToList();
+                    //ListBoxTimeTable.ItemsSource = timeTables;
+                    //TbCategoryName.Text = edu.Category.Name;
+
+                    DialogHostMoreInformation.DataContext = selected;
+                    DialogHostMoreInformation.IsOpen = true;
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка");
+                }
+           
+
         }
     }
 }

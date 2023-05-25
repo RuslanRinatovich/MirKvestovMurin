@@ -152,10 +152,13 @@ namespace QuestWorldApp.Pages
         private void BtnMoreInfo_Click(object sender, RoutedEventArgs e)
         {
             Quest quest = (sender as Button).DataContext as Quest;
+            if (quest.Rewiews.Count == 0)
+                return;
             //Trainer trainer = YogaFeatPilatesBDEntities.GetContext().Trainers.FirstOrDefault(p => p.Id == edu.TrainerId);
             //List<TimeTable> timeTables = YogaFeatPilatesBDEntities.GetContext().TimeTables.Where(p => p.CategoryTrainerId == edu.Id).ToList();
             //ListBoxTimeTable.ItemsSource = timeTables;
             //TbCategoryName.Text = edu.Category.Name;
+            ListBoxRewiews.ItemsSource = quest.Rewiews;
             DialogHostMoreInformation.DataContext = quest;
             DialogHostMoreInformation.IsOpen = true;
         }
@@ -190,6 +193,18 @@ namespace QuestWorldApp.Pages
             {
                 LoadDataGrid();
             }
+        }
+
+        private void RatingBarRate_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            //Quest quest = (sender as Button).DataContext as Quest;
+            ////Trainer trainer = YogaFeatPilatesBDEntities.GetContext().Trainers.FirstOrDefault(p => p.Id == edu.TrainerId);
+            ////List<TimeTable> timeTables = YogaFeatPilatesBDEntities.GetContext().TimeTables.Where(p => p.CategoryTrainerId == edu.Id).ToList();
+            ////ListBoxTimeTable.ItemsSource = timeTables;
+            ////TbCategoryName.Text = edu.Category.Name;
+            //ListBoxRewiews.ItemsSource = quest.Rewiews;
+            //DialogHostMoreInformation.DataContext = quest;
+            //DialogHostMoreInformation.IsOpen = true;
         }
     }
 }

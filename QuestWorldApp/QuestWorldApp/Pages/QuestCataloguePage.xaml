@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="КВЕСТЫ" IsVisibleChanged="Page_IsVisibleChanged"
+      Title="Каталог квестов" IsVisibleChanged="Page_IsVisibleChanged"
  
       >
     <Grid>
@@ -15,6 +15,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
+            
         </Grid.RowDefinitions>
 
         <WrapPanel Grid.Row="0" HorizontalAlignment="Stretch"  >
@@ -73,13 +74,14 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <materialDesign:Card Width="400" Height="500" Background="{StaticResource MaterialDesignDarkBackground}" >
+                    <materialDesign:Card Width="400" Height="600" Background="{StaticResource MaterialDesignDarkBackground}" >
                         <Grid materialDesign:ColorZoneAssist.Mode="SecondaryMid">
                             <Grid.RowDefinitions>
                                
                                 <RowDefinition        Height="300" />
                                 <RowDefinition        Height="60" />
                                 <RowDefinition        Height="60" />
+                                <RowDefinition        Height="100" />
                                 <RowDefinition        Height="40" />
                                 <RowDefinition        Height="40" />
 
@@ -91,7 +93,7 @@
                                                  FontWeight="Bold" Margin="10"
                                                 FontSize="22"/>
                             <StackPanel  Grid.Row="0"      HorizontalAlignment="Right" >
-                                <materialDesign:RatingBar  x:Name="RatingBarFearLevel" Margin="0 10 5 5"
+                                <materialDesign:RatingBar  x:Name="RatingBarFearLevel" Margin="0 10 5 5" ToolTip="Уровень страха"
                                                        IsReadOnly="True"   HorizontalAlignment="Right"
                                                        Max="{Binding FearLevel}" 
                                                        Orientation="Horizontal" 
@@ -99,12 +101,12 @@
                                 <materialDesign:RatingBar.ValueItemTemplate>
                                     <DataTemplate DataType="system:Int32">
                                         <Grid>
-                                                <materialDesign:PackIcon Width="24"  Height="24"   Kind="SkullCrossbones"  Foreground="White" />
+                                                <materialDesign:PackIcon Width="30"  Height="30"   Kind="SkullCrossbones"  Foreground="White" />
                                         </Grid>
                                     </DataTemplate>
                                 </materialDesign:RatingBar.ValueItemTemplate>
                             </materialDesign:RatingBar>
-                                <materialDesign:RatingBar  x:Name="RatingBarComplexity" Margin="0 0 5 5"
+                                <materialDesign:RatingBar  x:Name="RatingBarComplexity" Margin="0 0 5 5" ToolTip="Сложность"
                                                        IsReadOnly="True"  HorizontalAlignment="Right"
                                                        Max="{Binding Complexity}" 
                                                        Orientation="Horizontal" 
@@ -112,31 +114,40 @@
                                 <materialDesign:RatingBar.ValueItemTemplate>
                                     <DataTemplate DataType="system:Int32">
                                         <Grid>
-                                            <materialDesign:PackIcon Width="24"  Height="24"   Kind="Key" Foreground="White" />
+                                            <materialDesign:PackIcon Width="30"  Height="30"   Kind="Key" Foreground="White" />
                                         </Grid>
                                     </DataTemplate>
                                 </materialDesign:RatingBar.ValueItemTemplate>
                             </materialDesign:RatingBar>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 5 5">
-                                    <materialDesign:PackIcon Width="24"  Height="24"   Kind="Man" Foreground="White" />
-                                    <TextBlock Text="{Binding GetPeopleCount}" Foreground="White" FontSize="16" FontWeight="Bold"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 5 5" ToolTip="Количество людей">
+                                    <materialDesign:PackIcon Width="30"  Height="30"   Kind="Man" Foreground="White" />
+                                    <TextBlock Text="{Binding GetPeopleCount}" Foreground="White" FontSize="22" FontWeight="Bold"/>
                                 </StackPanel>
-                                <TextBlock Text="{Binding Age.Title}" Foreground="White" FontSize="18" FontWeight="Bold" HorizontalAlignment="Right" Margin="0 0 5 5"/>
+                                <TextBlock Text="{Binding Age.Title}" Foreground="White" FontSize="22" 
+                                           ToolTip="Возрастная категория" FontWeight="Bold" HorizontalAlignment="Right" Margin="0 0 5 5"/>
                             </StackPanel>
-                                <Button    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" 
-                                       HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 40 0"
-                                       Grid.Row="1"  
+                                <!--<Button    Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" 
+                                       HorizontalAlignment="Left" VerticalAlignment="Center" Margin="200 0 0 0"
+                                       Grid.Row="2"  
                                        ToolTip="Подробнее" 
                                        x:Name="BtnMoreInfo" 
                                        Padding="2 0 2 0" Click="BtnMoreInfo_Click"
                                                              
                                       >
                                 <materialDesign:PackIcon     Kind="DotsVertical" />
+                            </Button>-->
+
+                            <Button Grid.Row="2" HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" Click="BtnMoreInfo_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Рейтинг по отзывам: " Style="{StaticResource MaterialDesignSubtitle2TextBlock}"/>
+                                    <materialDesign:RatingBar    x:Name="RatingBarRate" Margin="10 0 0 0" IsReadOnly="True" 
+                                                      Value="{Binding GetRate}" MouseDown="RatingBarRate_MouseDown"  />
+                                </StackPanel>
                             </Button>
-                            
-                            <materialDesign:RatingBar Grid.Row="2"  x:Name="RatingBarRate" Margin="10 0 0 0" IsReadOnly="True"  Value="{Binding GetRate}" />
-                            <Button   Content="ЗАБРОНИРОВАТЬ" Grid.Row="3" Visibility="{Binding GetVisibility}" Click="Button_Click"/>
-                            <Button   Content="Оставить отзыв"  Grid.Row="4" Visibility="{Binding GetVisibility}" Click="BtnMakeRewiew_Click" />
+                            <TextBlock Grid.Row="3" Text="{Binding GetInfo}" TextWrapping="Wrap" Foreground="White" Padding="5" FontSize="14"/>
+
+                            <Button   Content="ЗАБРОНИРОВАТЬ" Grid.Row="4" Visibility="{Binding GetVisibility}" Click="Button_Click"/>
+                            <Button   Content="Оставить отзыв"  Grid.Row="5" Visibility="{Binding GetVisibility}" Click="BtnMakeRewiew_Click" />
                             <!--<TextBlock Grid.Row="2"      Margin="5" TextAlignment="Center"  
                                        Text="{Binding Trainer.GetFio}" TextWrapping="Wrap" HorizontalAlignment="Center"
                                        FontWeight="Bold" FontSize="14"  />
@@ -166,85 +177,85 @@
         <TextBlock Grid.Row="2" x:Name="TextBlockCount" />
 
         <materialDesign:DialogHost x:Name="DialogHostMoreInformation"
-                                   Background="{DynamicResource PrimaryHueDarkBrush }" MinWidth="800" 
-                                   MinHeight="400"
+                                   Background="{StaticResource MaterialDesignDarkBackground}" 
                                    
+                                   Width="600" MaxWidth="600"
+                                   Height="400" MaxHeight="400"
                                    BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="2" Grid.ColumnSpan="2"
                                   >
             <materialDesign:DialogHost.DialogContent >
                 <StackPanel Margin="20" >
-                    <Grid materialDesign:ColorZoneAssist.Mode="SecondaryMid">
+                    <Grid materialDesign:ColorZoneAssist.Mode="Dark">
                         <Grid.RowDefinitions>
-
-                            <RowDefinition        Height="300" />
                             <RowDefinition        Height="60" />
-                            <RowDefinition        Height="60" />
-                            <RowDefinition        Height="40" />
-
-
+                            <RowDefinition        Height="340" />
+                          
                         </Grid.RowDefinitions>
+                                
 
-                        <Image  Source="{Binding Path=GetPhoto}"  Grid.Row="0"  Height="300"  Width="400" 
-                                    Stretch="UniformToFill" />
-                        <TextBlock   Grid.Row="1"       Text="{Binding Title}" HorizontalAlignment="Left" Foreground="White"
-                                                 FontWeight="Bold" Margin="10"
-                                                FontSize="22"/>
-                        <StackPanel  Grid.Row="0"      HorizontalAlignment="Right" >
-                            <materialDesign:RatingBar   Margin="0 10 5 5"
-                                                       IsReadOnly="True"   HorizontalAlignment="Right"
-                                                       Max="{Binding FearLevel}" 
-                                                       Orientation="Horizontal" 
-                                                       Value="{Binding FearLevel}">
-                                <materialDesign:RatingBar.ValueItemTemplate>
-                                    <DataTemplate DataType="system:Int32">
-                                        <Grid>
-                                            <materialDesign:PackIcon Width="24"  Height="24"   Kind="SkullCrossbones"  Foreground="White" />
-                                        </Grid>
-                                    </DataTemplate>
-                                </materialDesign:RatingBar.ValueItemTemplate>
-                            </materialDesign:RatingBar>
-                            <materialDesign:RatingBar   Margin="0 0 5 5"
-                                                       IsReadOnly="True"  HorizontalAlignment="Right"
-                                                       Max="{Binding Complexity}" 
-                                                       Orientation="Horizontal" 
-                                                       Value="{Binding Complexity}">
-                                <materialDesign:RatingBar.ValueItemTemplate>
-                                    <DataTemplate DataType="system:Int32">
-                                        <Grid>
-                                            <materialDesign:PackIcon Width="24"  Height="24"   Kind="Key" Foreground="White" />
-                                        </Grid>
-                                    </DataTemplate>
-                                </materialDesign:RatingBar.ValueItemTemplate>
-                            </materialDesign:RatingBar>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 5 5">
-                                <materialDesign:PackIcon Width="24"  Height="24"   Kind="Man" Foreground="White" />
-                                <TextBlock Text="{Binding GetPeopleCount}" Foreground="White" FontSize="16" FontWeight="Bold"/>
-                            </StackPanel>
-                            <TextBlock Text="{Binding Age.Title}" Foreground="White" FontSize="18" FontWeight="Bold" HorizontalAlignment="Right" Margin="0 0 5 5"/>
-                        </StackPanel>
-                       
-
-                        <materialDesign:RatingBar Grid.Row="2"  x:Name="RatingBarRate" Margin="10 0 0 0" IsReadOnly="True"  Value="{Binding GetRate}" />
-                        <Button   Content="ЗАБРОНИРОВАТЬ" Grid.Row="3" Click="Button_Click"/>
-                        <!--<TextBlock Grid.Row="2"      Margin="5" TextAlignment="Center"  
-                                       Text="{Binding Trainer.GetFio}" TextWrapping="Wrap" HorizontalAlignment="Center"
+                     
+                        <TextBlock Grid.Row="0"      Margin="5" TextAlignment="Center"  VerticalAlignment="Stretch"
+                                       Text="Отзывы" TextWrapping="Wrap" HorizontalAlignment="Center"
                                        FontWeight="Bold" FontSize="14"  />
-                            <TextBlock Grid.Row="3"      Margin="5" TextAlignment="Center"  
-                                       Text="Стоимость абонементов" TextWrapping="Wrap" HorizontalAlignment="Center"
-                                       FontWeight="Bold" FontSize="12"  />
-                            <ScrollViewer HorizontalScrollBarVisibility="Disabled"  VerticalScrollBarVisibility="Auto"  Grid.Row="4">
-                                <ListBox  x:Name="ListBoxPrices" Height="200" ItemsSource="{Binding Abonements}" >
+                           
+                            <ScrollViewer HorizontalScrollBarVisibility="Disabled"  VerticalScrollBarVisibility="Auto"  Grid.Row="1">
+                                <ListBox  x:Name="ListBoxRewiews" VerticalAlignment="Stretch" >
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel Margin="5" Orientation="Horizontal">
-                                                <TextBlock FontSize="14" Margin="20 0 0 0" Text="{Binding Path=LessonCount, StringFormat={}{0} занятий}" HorizontalAlignment="Left" Width="150"/>
-                                                <TextBlock FontSize="14" Text="{Binding Path=Price, StringFormat='c', ConverterCulture='ru-RU'}" HorizontalAlignment="Right" Width="120"/>
+                                        <materialDesign:Card Width="600">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="30"/>
+                                                    <RowDefinition Height="30"/>
+                                                    <RowDefinition Height="30"/>
+                                                    <RowDefinition Height="30"/>
+                                                    <RowDefinition Height="30"/>
+                                                    <RowDefinition Height="30"/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="180"/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
 
-                                            </StackPanel>
-                                        </DataTemplate>
+
+
+                                                <materialDesign:RatingBar Margin="10 0 0 0" IsPreviewValueEnabled="True" Grid.Row="0" Grid.Column="0" IsReadOnly="True"    Value="{Binding Rate}" Max="5"  />
+                                                <TextBlock FontSize="16" Margin="20 0 0 0" 
+                                                           Grid.Row="0" Grid.Column="1"
+                                                       Style="{StaticResource MaterialDesignSubtitle2TextBlock  }" 
+                                                       Text="{Binding Path=User.GetFIO}" TextWrapping="Wrap" Width="600"
+                                                       HorizontalAlignment="Stretch" />
+
+
+
+                                                <TextBlock  Margin="10 0 0 0" Grid.Row="1" Grid.Column="0"  Text="Качество загадок" Style="{StaticResource MaterialDesignSubtitle2TextBlock  }"/>
+                                                <materialDesign:RatingBar Margin="10 0 0 0" IsReadOnly="True"  Grid.Row="1" Grid.Column="1" x:Name="RatingBarQualityOfPuzzles" Value="{Binding QualityOfPuzzles}" Max="10" />
+                                                <TextBlock Grid.Row="1" Grid.Column="1" Margin="300 0 0 0" Style="{StaticResource MaterialDesignCaptionTextBlock}" Text="{Binding GetQualityOfPuzzles}"/>
+                                                <TextBlock Margin="10 0 0 0"  Text="Антураж и декорации" Grid.Row="2" Grid.Column="0" Style="{StaticResource MaterialDesignSubtitle2TextBlock  }"/>
+                                                <materialDesign:RatingBar  Margin="10 0 0 0" Grid.Row="2" Grid.Column="1"  x:Name="RatingBarEntourage" Max="10" Value="{Binding Entourage}" IsReadOnly="True" />
+                                                <TextBlock Grid.Row="2" Grid.Column="1" Margin="300 0 0 0" Style="{StaticResource MaterialDesignCaptionTextBlock}" Text="{Binding GetEntourage}"/>
+                                                
+                                                <TextBlock  Margin="10 0 0 0"  Text="Сервис" Grid.Row="3" Grid.Column="0" Style="{StaticResource MaterialDesignSubtitle2TextBlock  }"/>
+                                                <materialDesign:RatingBar  Margin="10 0 0 0"  Grid.Row="3" Grid.Column="1" x:Name="RatingBarService"  IsReadOnly="True" Max="10"  Value="{Binding Sevice}"   />
+                                                <TextBlock Grid.Row="3" Grid.Column="1" Margin="300 0 0 0" Style="{StaticResource MaterialDesignCaptionTextBlock}" Text="{Binding GetService}"/>
+
+                                                <TextBlock  Margin="10 0 0 0" Text="Безопасность" Grid.Row="4" Grid.Column="0" Style="{StaticResource MaterialDesignSubtitle2TextBlock  }"/>
+                                                <materialDesign:RatingBar  Margin="10 0 0 0" Grid.Row="4" Grid.Column="1"  x:Name="RatingBarSafety"   IsReadOnly="True"  Max="10" Value="{Binding Safety}"  />
+                                                <TextBlock Grid.Row="4" Grid.Column="1" Margin="300 0 0 0" Style="{StaticResource MaterialDesignCaptionTextBlock}" Text="{Binding GetSafety}"/>
+                                                <TextBlock FontSize="14" Margin="10 0 0 0"  Text="Отзыв" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                                                       Style="{StaticResource MaterialDesignSubtitle2TextBlock  }"
+                    
+                                                       HorizontalAlignment="Stretch"/>
+                                                <TextBlock FontSize="14" Margin="10 0 0 0" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Title}" TextWrapping="Wrap"
+                                                       HorizontalAlignment="Stretch"/>
+
+                                                    </Grid>
+                                        </materialDesign:Card>
+                                    </DataTemplate>
                                     </ListBox.ItemTemplate>
                                 </ListBox>
-                            </ScrollViewer>-->
+                            </ScrollViewer>
 
                     </Grid>
 

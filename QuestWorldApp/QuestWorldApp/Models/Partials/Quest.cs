@@ -19,6 +19,17 @@ namespace QuestWorldApp.Models
             }
         }
 
+
+        public string GetInfo
+        {
+            get
+            {
+                if (Description.Length >= 200)
+                    return Description.Substring(0, 200);
+                return Description;
+            }
+        }
+
         public string GetPeopleCount
         {
             get

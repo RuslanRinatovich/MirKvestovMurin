@@ -121,8 +121,11 @@
     <Compile Include="Models\Organizer.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Partials\Booking.cs" />
     <Compile Include="Models\Partials\Quest.cs" />
+    <Compile Include="Models\Partials\Rewiew.cs" />
     <Compile Include="Models\Partials\TimeSheet.cs" />
+    <Compile Include="Models\Partials\User.cs" />
     <Compile Include="Models\Quest.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
@@ -147,6 +150,9 @@
     <Compile Include="Pages\AddQuestPage.xaml.cs">
       <DependentUpon>AddQuestPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddUserPage.xaml.cs">
+      <DependentUpon>AddUserPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AgesPage.xaml.cs">
       <DependentUpon>AgesPage.xaml</DependentUpon>
     </Compile>
@@ -168,8 +174,14 @@
     <Compile Include="Pages\QuestsPage.xaml.cs">
       <DependentUpon>QuestsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\RewiewsPage.xaml.cs">
+      <DependentUpon>RewiewsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\TimeSheetPage.xaml.cs">
       <DependentUpon>TimeSheetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UsersPage.xaml.cs">
+      <DependentUpon>UsersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\AddBookingWindow.xaml.cs">
       <DependentUpon>AddBookingWindow.xaml</DependentUpon>
@@ -196,6 +208,10 @@
       <DependentUpon>TimeSheetWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Pages\AddQuestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddUserPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -231,7 +247,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\RewiewsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\TimeSheetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UsersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -113,7 +113,8 @@ namespace QuestWorldApp.Pages
         private void UpdateData()
         {
             // получаем текущие данные из бд
-            var currentGoods = MirKvestovBDEntities.GetContext().Bookings.OrderBy(p => p.TimeSheet.Date).ThenBy(p => p.TimeSheet.Time).ToList();
+            string username = Manager.CurrentUser.UserName;
+            var currentGoods = MirKvestovBDEntities.GetContext().Bookings.Where(p => p.UserName == username).OrderBy(p => p.TimeSheet.Date).ThenBy(p => p.TimeSheet.Time).ToList();
             // выбор только тех товаров, по определенному диапазону скидки
 
             currentGoods = currentGoods.Where(p => p.UserInfo.ToLower().Contains(TBoxSearch.Text.ToLower()) ||

@@ -156,3 +156,9 @@ C:\DIPLOMS\Мурин\QuestWorldApp\QuestWorldApp\obj\Debug\Pages\MyRewiewPage.g
 C:\DIPLOMS\Мурин\QuestWorldApp\QuestWorldApp\obj\Debug\Pages\MyRewiewPage.baml
 C:\DIPLOMS\Мурин\QuestWorldApp\QuestWorldApp\obj\Debug\Pages\MyBookingPage.g.cs
 C:\DIPLOMS\Мурин\QuestWorldApp\QuestWorldApp\obj\Debug\Pages\MyBookingPage.baml
+C:\DIPLOMS\Мурин\QuestWorldApp\QuestWorldApp\obj\Debug\Pages\AddUserPage.g.cs
+C:\DIPLOMS\Мурин\QuestWorldApp\QuestWorldApp\obj\Debug\Pages\UsersPage.g.cs
+C:\DIPLOMS\Мурин\QuestWorldApp\QuestWorldApp\obj\Debug\Pages\AddUserPage.baml
+C:\DIPLOMS\Мурин\QuestWorldApp\QuestWorldApp\obj\Debug\Pages\UsersPage.baml
+C:\DIPLOMS\Мурин\QuestWorldApp\QuestWorldApp\obj\Debug\Pages\RewiewsPage.g.cs
+C:\DIPLOMS\Мурин\QuestWorldApp\QuestWorldApp\obj\Debug\Pages\RewiewsPage.baml

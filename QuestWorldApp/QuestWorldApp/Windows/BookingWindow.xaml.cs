@@ -76,5 +76,18 @@ namespace QuestWorldApp.Windows
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+
+        private void ComboBoxTimeSheet_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        {if (ComboBoxTimeSheet.SelectedIndex == -1)
+                return;
+            int id = Convert.ToInt32(ComboBoxTimeSheet.SelectedValue);
+            TimeSheet timeSheet = MirKvestovBDEntities.GetContext().TimeSheets.FirstOrDefault(p => p.Id == id);
+            double price = 0;
+            if (timeSheet != null)
+                price = timeSheet.Price;
+            TextBlockPrice.Text = price.ToString("c");
+
+        }
     }
 }

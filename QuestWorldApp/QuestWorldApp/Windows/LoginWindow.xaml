@@ -41,11 +41,11 @@
             <Button Width="100" Height="30" 
                     Content="OK" 
                     x:Name="BtnOk" 
-                    Click="BtnOkClick"/>
+                    Click="BtnOkClick" IsDefault="True"/>
             <Button Width="100"
                     Height="30" 
                     Content="Cancel" 
-                    x:Name="BtnCancel" 
+                    x:Name="BtnCancel" IsCancel="True"
                     Click="BtnCancelClick"/>
         </StackPanel>
         <Button Grid.Row="4" Content="Регистрация" Padding="0" FontSize="10" Height="20" Click="Button_Click"/>
